@@ -12,7 +12,9 @@ class TestStack(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
         mybucket = s3.Bucket(self, "mybucket1",
-                             versioned=False)
+                             versioned=False,
+                             block_public_access=s3.BlockPublicAccess.BLOCK_ALL)
+        
         # The code that defines your stack goes here
 
         # example resource
