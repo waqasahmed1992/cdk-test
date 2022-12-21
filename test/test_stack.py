@@ -12,7 +12,7 @@ class TestStack(Stack):
         super().__init__(scope, construct_id, **kwargs)
 
         mybucket = s3.Bucket(self, "mybucket1",
-                             versioned=True)
+                             versioned=False)
         # The code that defines your stack goes here
 
         # example resource
