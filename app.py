@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 import os
-
 import aws_cdk as cdk
 
 from test.test_stack import ArtifactBucketClass
-
+from custom_resources.custom_stack import VpcClass
 
 
 
@@ -19,8 +18,10 @@ env_prod=cdk.Environment(region=app.node.try_get_context('prod')['region'])
 
 # print('@aws-cdk/aws-events:eventsTargetQueueSameAccount')
 
-ArtifactBucketClass(app, "MyDevStack",env=env_dev)
-ArtifactBucketClass(app, "MyProdStack",is_prod=True,env=env_prod)
+# ArtifactBucketClass(app, "MyDevStack",env=env_dev)
+# ArtifactBucketClass(app, "MyProdStack",is_prod=True,env=env_prod)
+
+my_custom_vpc=VpcClass(app,"my-vpc-stack")
 
 # ArtifactBucketClass(app, "TestStack",
 #     # If you don't specify 'env', this stack will be environment-agnostic.
